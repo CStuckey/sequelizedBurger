@@ -8,7 +8,7 @@ var PORT = process.env.PORT || 8080;
 
 // Require our models for syncing
 var db = require("./models");
-var router = require("./controllers/burgers_controllers.js");
+
 
 // Set up the Express app to handle data parsing
 app.use(bodyParser.json());
@@ -18,7 +18,7 @@ app.use(bodyParser.json({ type: "application/vnd.api+json"}));
 
 // Static Directory - content for the app from the "public" directory in the application directory.
 app.use(express.static("./public"));
-app.use("/", router);
+app.use(require('./controllers/burgers_controllers.js'));
 
 
 var exphbs = require("express-handlebars");
