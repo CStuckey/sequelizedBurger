@@ -18,18 +18,17 @@ router.get("/", function(req, res) {
 });
 
 router.post("/", function(req, res) {
-	var newTaco = req.body.taco_name;
+	var newTaco = req.body.taco;
 	console.log('newTaco is #{newTaco}');
 	db.Taco.create({
-		taco_name: newTaco,
-		devoured: false
+		taco_name: newTaco
 	}).then(function(data) {
 		res.redirect("/");
 		console.log(data);
 	})
 });
 
-router.post("/eatTaco", function(req, res) {
+router.post("/:eatTaco", function(req, res) {
 	var tacoId = req.body.tacoID;
 	console.log('tacoId is ${tacoId}');
 	db.Taco.update({

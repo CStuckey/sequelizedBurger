@@ -1,22 +1,12 @@
 <div class="container">
 
-	{{!-- TACO IMAGE --}}
-	<div class="row center-block col-sm-12">
-		<img src="../assets/img/taco.png">
-	</div>
-	
-	{{!-- TITLE --}}
-	<div class="row center-block text-center">
-		<h1>Eat-da-Taco!</h1>
-	</div>
-
 	<div class="row center-block">
 	{{!-- Left panel to Devour Tacos!!! --}}
 		<section class="col-sm-6 center-block text-center">
-			{{#each taco}}
+			{{#each tacos}}
 				{{#unless this.devoured}}
 				<div>
-					{{this.taco_name}}
+					<h3>{{this.taco_name}}</h3>
 
 					<form action="/eatTaco" method="POST">
 						<input type="hidden" name="tacoID" value={{this.id}}>
@@ -28,10 +18,10 @@
 		</section>
 	{{!-- Right panel to list devoured Tacos!!!	 --}}
 		<section class="col-sm-6 center-block text-center">
-			{{#each taco}}
+			{{#each tacos}}
 				{{#if this.devoured}}
 				<div>
-					{{this.taco_name}}
+					<h4>{{this.taco_name}}</h4>
 				</div>
 				{{/if}}
 			{{/each}}	
@@ -39,7 +29,7 @@
 	</div>
 	
 	{{!-- Submission Form --}}
-	<div class="row center-block">
+	<div class="row">
 		<section class="col-sm-12 center-block text-center">
 			<form class="create-update-form" action="/" method="POST">
 				<div class="form-group">
